@@ -1,14 +1,19 @@
 const mysql = require('../../services/mysql/mysql')
-const queries = require('./queries')
+const QUERIES = require('./queries')
 
 module.exports = {
 
     async insertRecipe(recipe){
 
-        var query = ""
-        console.log(query)
+        var query = QUERIES.INSERT_RECIPE
+        var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.lastModificationDateTime]
         
-        var result = await mysql.executeQuery(query)
+        console.log(query)
+        console.log(params)
+        
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        console.log(result)
 
         return result
     }

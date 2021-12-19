@@ -1,5 +1,6 @@
 const dao = require('./dao')
 const Recipe = require('../../entities/recipe')
+const toolbox = require('../../util/toolbox')
 
 module.exports = {
 
@@ -30,12 +31,12 @@ module.exports = {
         var book = json.book
         var plate = json.plate
         var calories = json.calories
-        var photo = json.photo
+        var photoUrl = json.photoUrl
+        var photoUrlBackup = json.photoUrlBackup
         var grade = json.grade
-        var creationDateTime = json.creationDateTime
-        var lastModificationDateTime = json.lastModificationDateTime
+        var lastModificationDateTime = toolbox.getDateTime()
 
-        var recipe = new Recipe(0, name, type, ingredients, book, plate, calories, photo, grade, creationDateTime, lastModificationDateTime)
+        var recipe = new Recipe(0, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, lastModificationDateTime)
         recipe.print()
 
         //Obtenemos la promesa y se la pasamos al controlador

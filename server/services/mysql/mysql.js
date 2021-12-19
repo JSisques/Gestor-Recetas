@@ -43,5 +43,26 @@ module.exports = {
         //Devolvemos la promesa que en un futuro tendrá los datos correspondientes de la query
         return promise
 
+    },
+
+    async executeQueryWithParams(query, params) {
+        var connection = this.connect()
+
+        //Utilizamos promesas al ser un proceso asincrono el metodo query de la libreria mysql
+        const promise = new Promise((resolve, reject) => {
+
+            connection.query(query, params, (err, results) => {
+                if (err) return reject(err);
+
+                //console.log('The solution is: ', results);
+
+                return resolve(results)
+
+            })
+        })
+
+        //Devolvemos la promesa que en un futuro tendrá los datos correspondientes de la query
+        return promise
+
     }
 }
