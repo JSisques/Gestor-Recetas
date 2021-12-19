@@ -1,0 +1,20 @@
+{
+    "name": "Prueeba",
+    "type": "Type",
+    "ingredients": [
+
+        {
+            "name": "Ingredient"
+        },
+        {
+            "name": "Ingredient"
+        }
+    ],
+    "book": "Book",
+    "plate": "Plate",
+    "calories": "666",
+    "photo": "URL",
+    "grade": "9.75",
+    "creationDateTime": "Date",
+    "lastModificationDateTime": "Date"
+}
