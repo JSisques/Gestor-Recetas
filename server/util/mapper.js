@@ -31,10 +31,11 @@ module.exports = {
 
     ingredientFromJson(json) {
 
+        var id = json.id || 0
         var name = json.name
-        var creationDateTime = json.creationDateTime
+        var creationDateTime = json.creationDateTime || toolbox.getDateTime()
 
-        var ingredient = new Ingredient(name, creationDateTime)
+        var ingredient = new Ingredient(id, name, creationDateTime)
 
         return ingredient
 

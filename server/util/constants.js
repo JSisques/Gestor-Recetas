@@ -1,3 +1,4 @@
 module.exports = Object.freeze({
-    APP_NAME: ""
+    APP_NAME: "",
+    API_PATH: "/api/v1"
 });

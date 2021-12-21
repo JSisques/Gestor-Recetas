@@ -1,11 +1,11 @@
 const mysql = require('../../services/mysql/mysql')
-const QUERIES = require('./queries')
+const queries = require('./queries')
 
 module.exports = {
 
     async insertRecipe(recipe){
 
-        var query = QUERIES.INSERT_RECIPE
+        var query = queries.INSERT_RECIPE
         var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.lastModificationDateTime]
         
         console.log(query)
@@ -20,7 +20,7 @@ module.exports = {
 
     async getAllRecipes(){
 
-        var query = QUERIES.SELECT_ALL_RECIPES
+        var query = queries.SELECT_ALL_RECIPES
         console.log(query)
 
         var result = await mysql.executeQuery(query)
@@ -32,7 +32,7 @@ module.exports = {
 
     async getRecipeById(id){
 
-        var query = QUERIES.SELECT_RECIPE_BY_ID
+        var query = queries.SELECT_RECIPE_BY_ID
         var params = [id]
         
         console.log(query)
@@ -46,7 +46,7 @@ module.exports = {
 
     async updateRecipe(recipe){
 
-        var query = QUERIES.UPDATE_RECIPE
+        var query = queries.UPDATE_RECIPE
         var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.lastModificationDateTime, recipe.id]
         
         console.log(query)
