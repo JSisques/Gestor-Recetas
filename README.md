@@ -1,4 +1,4 @@
-<img align="center" src="https://github.com/JSisques/Gestor-Recetas/blob/dev/img/Banner.png"/>
+<img align="center" src="https://github.com/JSisques/Gestor-Recetas/blob/master/img/Banner.png"/>
 
 # Gestor-Recetas
 
