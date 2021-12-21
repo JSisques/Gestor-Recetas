@@ -1,6 +1,6 @@
 const dao = require('./dao')
 const Recipe = require('../../entities/recipe')
-const toolbox = require('../../util/toolbox')
+const mapper = require('../../util/mapper')
 
 module.exports = {
 
@@ -12,11 +12,11 @@ module.exports = {
         return result
     },
 
-    async getRecipe(id){
+    async getRecipeById(id){
 
-        if(!isNaN(id)) return await dao.getRecipe(id)
+        if(!isNaN(id)) return await dao.getRecipeById(id)
 
-        else return "El id " + id + " no es un número"
+        else return {Error: "El id " + id + " no existe"}
         
     },
 
@@ -24,23 +24,24 @@ module.exports = {
 
         console.log(json)
 
-        //Comprobaciones
-        var name = json.name
-        var type = json.type
-        var ingredients = json.ingredients
-        var book = json.book
-        var plate = json.plate
-        var calories = json.calories
-        var photoUrl = json.photoUrl
-        var photoUrlBackup = json.photoUrlBackup
-        var grade = json.grade
-        var lastModificationDateTime = toolbox.getDateTime()
-
-        var recipe = new Recipe(0, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, lastModificationDateTime)
+        var recipe = mapper.recipeFromJson(json)
         recipe.print()
 
         //Obtenemos la promesa y se la pasamos al controlador
         var result = await dao.insertRecipe(recipe)
+
+        return result
+    }, 
+
+    async update(json){
+
+        console.log(json)
+
+        var recipe = mapper.recipeFromJson(json)
+        recipe.print()
+
+        //Obtenemos la promesa y se la pasamos al controlador
+        var result = await dao.updateRecipe(recipe)
 
         return result
     }
