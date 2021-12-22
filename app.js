@@ -11,5 +11,6 @@ app.use(express.json())
 //Routes
 app.use(constants.API_PATH, require('./server/microservices/recipe/routes'))
 app.use(constants.API_PATH, require('./server/microservices/ingredient/routes'))
+app.use(constants.API_PATH, require('./server/microservices/info/routes'))
 
 module.exports = app

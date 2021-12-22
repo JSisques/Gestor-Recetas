@@ -7,6 +7,7 @@ This file is a contains a list of changes for each release.
 * Create `calories_scrapping.py` to get a list of a bunch of ingredients and their calories
 * Create `insert.sql` with all the ingredients that are neededd in the database
 * Update `mapper.js`
+* Create `info microservice`
 
 ## v0.3.0 (21-12-2021)
 
