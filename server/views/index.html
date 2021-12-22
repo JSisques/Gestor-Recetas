@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+
+    <%- include('partials/head.html') %>
+
+</head>
+
+<body class="bg-image" style="background-repeat: no-repeat; background-size: cover; background-image: url('resources/img/background.jpg'); height: 100vh;">
+
+    <%- include('partials/navbar.html') %>
+
+        <div class="container-fluid">
+            <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Bienvenido a <%= app %>
+            </h1>
+            <hr class="mt-2 mb-5">
+        </div>
+
+        <div class="container-fluid align-middle">
+            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sapiente perferendis
+                cupiditate? Accusantium earum rem officiis nam corporis ab sequi, cumque fugit. Iusto architecto a non
+                dolorem perspiciatis repudiandae hic?</p>
+        </div>
+        <%- include('partials/footer.html') %>
+</body>
+
+</html>

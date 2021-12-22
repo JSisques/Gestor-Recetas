@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+
+    <%- include('partials/head.html')%>
+</head>
+
+<body>
+    <%- include('partials/navbar.html')%>
+
+        <!--Cabecera-->
+        <div class="container">
+            <h1 class="fw-light text-lg-center mt-3 mb-0">
+                Recetas
+            </h1>
+            <hr>
+        </div>
+
+        <!-- Buscador -->
+        <div class="container input-group mt-2 mb-2">
+            <input id="search" type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+            <button id="search-button" type="button" class="btn btn-dark rounded-end ">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <button id="search-button" type="button" class="btn btn-dark ms-2 rounded" data-bs-toggle="collapse"
+                data-bs-target="#filter" aria-controls="filter" aria-expanded="false" aria-label="Filter">
+                <i class="fas fa-filter"></i>
+            </button>
+
+            <!--Contenedor con los filtros-->
+            <div class="collapse navbar-collapse my-2 my-lg-0 justify-content-end" id="filter">
+                <div class="row mt-2 mb-2 w-auto text-center">
+                    <div class="col-md-3 mb-2 mt-2 pt-2 pb-2 ">
+                        <input type="checkbox" name="prueba" id="">
+                        <label for="">Por completar</label>
+                    </div>
+                    <div class="col-md-3 mb-2 mt-2 pt-2 pb-2">
+                        <label for="numIngredients">Número de ingredientes</label>
+                        <input type="number" name="numIngredients" id="numIngredients">
+                    </div>
+                    <div class="col-md-3 mb-2 mt-2 pt-2 pb-2">
+                        <label for="numCalories">Menos calorias que</label>
+                        <input type="number" name="numCalories" id="numCalories">
+                    </div>
+                    <div class="col-md-3 mb-2 mt-2 pt-2 pb-2">
+                        <label for="grade">Nota</label>
+                        <input type="number" name="grade" id="grade">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mt-2 mb-2 w-auto text-center">
+                <% for (let index = 0; index < recipes.length; index++) { %>
+                <div class="border rounded bg-success col-md-3 mb-2 mt-2 pt-2 pb-2">
+                    <%= recipes[index].name %>
+                </div>
+                <%}%>
+            </div>
+        </div>
+
+        <%- include('partials/footer.html') %>
+</body>
+
+</html>

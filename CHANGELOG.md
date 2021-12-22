@@ -8,6 +8,10 @@ This file is a contains a list of changes for each release.
 * Create `insert.sql` with all the ingredients that are neededd in the database
 * Update `mapper.js`
 * Create `info microservice`
+* Create `web microservice`
+* Create `index.html`
+* Create `recipe_detail.html`
+* Create `recipe.html`
 
 ## v0.3.0 (21-12-2021)
 
