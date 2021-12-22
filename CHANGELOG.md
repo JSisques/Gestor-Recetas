@@ -2,6 +2,12 @@
 
 This file is a contains a list of changes for each release.
 
+## v0.4.0 (22-12-2021)
+
+* Create `calories_scrapping.py` to get a list of a bunch of ingredients and their calories
+* Create `insert.sql` with all the ingredients that are neededd in the database
+* Update `mapper.js`
+
 ## v0.3.0 (21-12-2021)
 
 * Add `GET method` to get all the recipes stored in the database

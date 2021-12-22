@@ -33,9 +33,10 @@ module.exports = {
 
         var id = json.id || 0
         var name = json.name
+        var calories = json.calories
         var creationDateTime = json.creationDateTime || toolbox.getDateTime()
 
-        var ingredient = new Ingredient(id, name, creationDateTime)
+        var ingredient = new Ingredient(id, name, creationDateTime, calories)
 
         return ingredient
 
