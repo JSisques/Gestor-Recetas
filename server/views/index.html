@@ -5,27 +5,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
+    <title>
+        <%= title%>
+    </title>
 
     <%- include('partials/head.html') %>
 
 </head>
 
-<body class="bg-image" style="background-repeat: no-repeat; background-size: cover; background-image: url('resources/img/background.jpg'); height: 100vh;">
+<body>
 
     <%- include('partials/navbar.html') %>
 
-        <div class="container-fluid">
-            <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Bienvenido a <%= app %>
+        <div class="container">
+            <h1 class="fw-light text-center text-lg-center mt-4 mb-0">Bienvenido a <%= app %>
             </h1>
             <hr class="mt-2 mb-5">
         </div>
 
-        <div class="container-fluid align-middle">
-            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sapiente perferendis
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sapiente perferendis
                 cupiditate? Accusantium earum rem officiis nam corporis ab sequi, cumque fugit. Iusto architecto a non
                 dolorem perspiciatis repudiandae hic?</p>
         </div>
+
+        <div class="container text-center">
+            <h1 class="display-1" id="span"></h1>
+        </div>
+
+        <script>
+            var span = document.getElementById('span');
+
+            function time() {
+                var d = new Date();
+                var day = d.getDay();
+                var month = d.getMonth() + 1;
+                var year = d.getFullYear();
+                var s = d.getSeconds();
+                var m = d.getMinutes();
+                var h = d.getHours();
+                span.textContent =
+                ("0" + day).substr(-2) + "/" + ("0" + month).substr(-2) + "/" + year + " " + ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+            }
+
+            setInterval(time, 1000);
+        </script>
         <%- include('partials/footer.html') %>
 </body>
 

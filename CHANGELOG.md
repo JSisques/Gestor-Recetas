@@ -12,6 +12,9 @@ This file is a contains a list of changes for each release.
 * Create `index.html`
 * Create `recipe_detail.html`
 * Create `recipe.html`
+* Update `add_recipe.html`
+* Create `documentation.html`
+* Create `statistics.html`
 
 ## v0.3.0 (21-12-2021)
 

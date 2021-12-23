@@ -25,7 +25,8 @@ module.exports = {
 
     async getRecipeById(req, res) {
 
-        var result =  await model.getRecipeById(1)
+        var id = req.params.ID
+        var result =  await model.getRecipeById(id)
         result.print()
 
         return res.render('recipe_detail.html', {
@@ -33,5 +34,38 @@ module.exports = {
             title: "Recetas",
             recipe: result
         })
+    },
+
+    async addRecipe(req, res) {
+
+        return res.render('add_recipe.html', {
+            app: pkg.appName,
+            title: "Añadir receta"
+        })
+    },
+
+    async getDocumentation(req, res) {
+
+        return res.render('documentation.html', {
+            app: pkg.appName,
+            title: "Documentación"
+        })
+    },
+
+    async getStatistics(req, res) {
+
+        return res.render('statistics.html', {
+            app: pkg.appName,
+            title: "Estadísticas"
+        })
+    },
+
+    async exportData(req, res) {
+
+        var file =  await model.exportData()
+
+        return res.download(file);
     }
+
+
 }

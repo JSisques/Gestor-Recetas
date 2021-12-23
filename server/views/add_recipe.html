@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+
+    <%- include('partials/head.html') %>
+
+</head>
+
+<body>
+
+    <%- include('partials/navbar.html') %>
+
+        <div class="container">
+            <h1 class="fw-light text-lg-center mt-3 mb-0"><%= title%></h1>
+            <hr>
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Nombre:</h3>
+        </div>
+
+        <div class="container  input-group mt-2 mb-2">
+            <span class="input-group-text bg-dark rounded-start" id="basic-addon1"><i class="fas fa-cheese text-white"></i></span>
+            <input class="form-control" type="text" id="nameInput" name="nameInput"
+                placeholder="Introduce el nombre de la receta...">
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Información:</h3>
+        </div>
+
+        <div class="container  input-group mt-2 mb-2">
+            <span class="input-group-text bg-dark rounded-start" id="basic-addon1"><i class="fas fa-bacon text-white"></i></span>
+            <input class="form-control" type="number" id="caloriesInput" name="caloriesInput"
+                placeholder="Introduce las calorias...">
+
+                <span class="input-group-text bg-dark" id="basic-addon1"><i class="fas fa-medal text-white"></i></span>
+            <input class="form-control" type="number" step="any" id="gradeInput" name="gradeInput"
+                placeholder="Introduce la nota...">
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Ingredientes:</h3>
+        </div>
+
+        <div class="container  input-group mt-2 mb-2">
+            <span class="input-group-text bg-dark rounded-start" id="basic-addon1"><i class="fas fa-box text-white"></i></span>
+            <input class="form-control" type="number" id="addIngredientQuantityInput" name="addIngredientQuantityInput"
+                placeholder="Introduce la cantidad...">
+                <span class="input-group-text bg-dark" id="basic-addon1"><i class="fas fa-utensil-spoon text-white"></i></span>
+                <input class="form-control" type="text" id="addIngredientMeasureInput" name="addIngredientMeasureInput"
+                placeholder="Introduce la unidad de medida...">
+                <span class="input-group-text bg-dark" id="basic-addon1"><i class="fas fa-carrot text-white"></i></span>
+            <input class="form-control" type="text" id="addIngredientInput" name="addIngredientInput"
+                placeholder="Introduce un ingrediente...">
+            <button id="addIngredient-button" type="button" class="btn btn-dark rounded-end" data-bs-toggle="collapse"
+                data-bs-target="#addIngredient" aria-controls="addIngredient" aria-expanded="false"
+                aria-label="AddIngredient">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="container">
+
+            <div class="row mt-2 mb-2" id="container-ingredient">
+            </div>
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Pasos a seguir:</h3>
+        </div>
+
+        <div class="container  input-group mt-2 mb-2">
+            <textarea class="form-control" id="addStepInput" name="addStepInput" rows="3"
+                placeholder="Introduce un paso..."></textarea>
+            <button id="addStep-button" type="button" class="btn btn-dark rounded-end" data-bs-toggle="collapse"
+                data-bs-target="#addStep" aria-controls="addStep" aria-expanded="false" aria-label="AddStep">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="container mt-2 mb-2" id="container-step">
+        </div>
+
+        <div class="container mt-2 mb-5 text-center" id="container-step">
+            <button type="submit" class="btn btn-dark rounded">
+                Añadir receta
+            </button>
+        </div>
+
+        <%- include('partials/footer.html') %>
+
+
+            <script>
+                var ingredients = []
+                document.getElementById("addIngredient-button").onclick = function () {
+
+                    var parent = document.getElementById("container-ingredient");
+
+                    var newDiv = document.createElement("div")
+                    newDiv.className = "container col-md-3 mb-2 mt-2 pt-2 pb-2 text-center"
+
+                    var inputTextIngredient = document.getElementById('addIngredientInput').value
+                    var inputTextQuantity = document.getElementById('addIngredientQuantityInput').value
+                    var inputTextMeasure = document.getElementById('addIngredientMeasureInput').value
+
+                    if (inputTextIngredient.length > 0 && inputTextQuantity.length > 0 && inputTextMeasure.length > 0) {
+
+                        var text = document.createElement("p")
+                        newDiv.innerHTML = inputTextQuantity + " " + inputTextMeasure + " de " + inputTextIngredient
+
+                        //newDiv.appendChild(text)
+                        parent.appendChild(newDiv.cloneNode(true));
+
+                        ingredients.push(inputTextIngredient)
+                        document.getElementById('addIngredientInput').value = ''
+                        document.getElementById('addIngredientQuantityInput').value = ''
+                        document.getElementById('addIngredientMeasureInput').value = ''
+                    }
+
+
+
+                }
+            </script>
+            <!--Para cuando se pulse en el botón-->
+            <script>
+                var numSteps = 1
+                document.getElementById("addStep-button").onclick = function () {
+
+                    var parent = document.getElementById("container-step");
+
+                    var newDiv = document.createElement("div")
+                    newDiv.className = "row"
+
+                    var title = document.createElement("h3")
+                    title.innerHTML = "Paso " + numSteps + ":"
+
+                    var inputText = document.getElementById('addStepInput').value
+
+                    if (inputText.length > 0) {
+
+                        var text = document.createElement("p")
+                        text.innerHTML = inputText
+
+                        newDiv.appendChild(title)
+                        newDiv.appendChild(text)
+                        parent.appendChild(newDiv.cloneNode(true));
+
+                        numSteps++
+
+                        document.getElementById('addStepInput').value = ''
+                    }
+
+
+
+                }
+            </script>
+
+            <!--Evento input text cuando se pulse enter-->
+            <script>
+                var inputText = document.getElementById('addStepInput')
+
+                inputText.addEventListener("keyup", function (event) {
+                    // Number 13 is the "Enter" key on the keyboard
+                    if (event.keyCode === 13) {
+                        // Cancel the default action, if needed
+                        event.preventDefault();
+                        // Trigger the button element with a click
+                        document.getElementById("addStep-button").click();
+                    }
+                });
+            </script>
+</body>
+
+</html>

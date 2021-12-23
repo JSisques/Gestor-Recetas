@@ -62,7 +62,7 @@
             <div class="row mt-2 mb-2 w-auto text-center">
                 <% for (let index = 0; index < recipes.length; index++) { %>
                 <div class="border rounded bg-success col-md-3 mb-2 mt-2 pt-2 pb-2">
-                    <%= recipes[index].name %>
+                    <a class="text-decoration-none text-dark" href="/recipe/<%= recipes[index].id %>"> <%= recipes[index].name %></a>
                 </div>
                 <%}%>
             </div>

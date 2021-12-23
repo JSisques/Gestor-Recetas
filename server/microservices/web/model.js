@@ -1,6 +1,7 @@
 const dao = require('./dao')
 const Recipe = require('../../entities/recipe')
 const mapper = require('../../util/mapper')
+const fs = require('fs')
 
 module.exports = {
 
@@ -21,7 +22,6 @@ module.exports = {
 
     async getAllRecipes(){
 
-
             var result = await dao.getAllRecipes()
             var recipes = []
             result.forEach(element => {
@@ -31,6 +31,19 @@ module.exports = {
 
             return recipes
         
-    }
+    },
+
+    async exportData(){
+
+        var result = await dao.getAllRecipes()
+        
+        var file = fs.writeFile('export.json', 'Datos a exportar', function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+          });
+
+        return file
+    
+}
 
 }
