@@ -10,5 +10,7 @@ router.get('/recipe', controller.getAllRecipes)
 router.get('/add_recipe', controller.addRecipe)
 router.get('/documentation', controller.getDocumentation)
 router.get('/statistics', controller.getStatistics)
+router.get('/add_ingredient', controller.addIngredient)
+router.get('/add_book', controller.addBook)
 
 module.exports = router

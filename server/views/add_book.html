@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>
+    </title>
+
+    <%- include('partials/head.html') %>
+
+</head>
+
+<body>
+
+    <%- include('partials/navbar.html') %>
+
+        <div class="container">
+            <h1 class="fw-light text-lg-center mt-3 mb-0">
+                <%= title%>
+            </h1>
+            <hr>
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Nombre:</h3>
+        </div>
+
+        <div class="container input-group mt-2 mb-2">
+            <span class="input-group-text bg-dark rounded-start" id="basic-addon1"><i
+                    class="fas fa-book text-white"></i></span>
+            <input class="form-control" type="text" id="nameInput" name="nameInput"
+                placeholder="Nombre del libro...">
+        </div>
+
+        <div class="container mt-2 mb-2">
+            <h3>Numero de páginas:</h3>
+        </div>
+
+        <div class="container input-group mt-2 mb-2">
+            <span class="input-group-text bg-dark rounded-start" id="basic-addon1"><i
+                    class="fas fa-book-open text-white"></i></span>
+            <input class="form-control" type="number" id="numPagesInput" name="numPagesInput" placeholder="Páginas...">
+        </div>
+
+        <div class="container mt-2 mb-5 text-center" id="container-step">
+            <button id="addIngredient-button" type="submit" class="btn btn-dark rounded">
+                Añadir libro
+            </button>
+        </div>
+
+        <%- include('partials/footer.html') %>
+
+
+            <script>
+
+                var url = "http://localhost:8080/api/v1/book";
+
+                var request = new XMLHttpRequest();
+
+                document.getElementById("addIngredient-button").onclick = function () {
+
+                    var nameInput = document.getElementById('nameInput').value
+                    var numPagesInput = document.getElementById('numPagesInput').value
+
+                    if (nameInput.length > 0 && numPagesInput.length > 0) {
+                        
+                        var data = JSON.stringify({
+                            name: nameInput,
+                            numPages: numPagesInput
+                        })
+
+                        console.log(data)
+
+                        request.open('POST', url, true)
+                        request.setRequestHeader("Content-Type", "application/json");
+                        request.send(data);
+                        
+                        document.getElementById('nameInput').value = ''
+                        document.getElementById('numPagesInput').value = ''
+                    }
+                }
+            </script>
+
+            <!--Evento input text cuando se pulse enter-->
+            <script>
+                var inputText = document.getElementById('caloriesInput')
+
+                inputText.addEventListener("keyup", function (event) {
+                    // Number 13 is the "Enter" key on the keyboard
+                    if (event.keyCode === 13) {
+                        // Cancel the default action, if needed
+                        event.preventDefault();
+                        // Trigger the button element with a click
+                        document.getElementById("addIngredient-button").click();
+                    }
+                });
+            </script>
+</body>
+
+</html>

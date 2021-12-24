@@ -3,10 +3,10 @@ const queries = require('./queries')
 
 module.exports = {
 
-    async insertIngredient(ingredient){
+    async insertBook(book){
 
-        var query = queries.INSERT_INGREDIENT
-        var params = [ingredient.name, ingredient.calories]
+        var query = queries.INSERT_BOOK
+        var params = [book.name, book.numPages]
         
         console.log(query)
         console.log(params)
@@ -18,9 +18,9 @@ module.exports = {
         return result
     }, 
 
-    async getAllIngredients(){
+    async getAllBooks(){
 
-        var query = queries.SELECT_ALL_INGREDIENTS
+        var query = queries.SELECT_ALL_BOOKS
         console.log(query)
 
         var result = await mysql.executeQuery(query)
@@ -30,9 +30,9 @@ module.exports = {
 
     },
 
-    async getIngredientById(id){
+    async getBookById(id){
 
-        var query = queries.SELECT_INGREDIENT_BY_ID
+        var query = queries.SELECT_BOOK_BY_ID
         var params = [id]
         
         console.log(query)
@@ -44,10 +44,10 @@ module.exports = {
 
     },
 
-    async updateIngredient(ingredient){
+    async updateBook(book){
 
-        var query = queries.UPDATE_INGREDIENT
-        var params = [ingredient.name,  ingredient.id]
+        var query = queries.UPDATE_BOOK
+        var params = [book.name, book.numPages, book.id]
         
         console.log(query)
         console.log(params)

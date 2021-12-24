@@ -1,5 +1,6 @@
 const Recipe = require("../entities/recipe")
 const Ingredient = require("../entities/ingredient")
+const Book = require("../entities/book")
 const toolbox = require('./toolbox')
 
 module.exports = {
@@ -66,6 +67,19 @@ module.exports = {
         var creationDateTime = json.creationDateTime || toolbox.getDateTime()
 
         var ingredient = new Ingredient(id, name, creationDateTime, calories)
+
+        return ingredient
+
+    },
+
+    bookFromJson(json) {
+
+        var id = json.id || 0
+        var name = json.name
+        var numPages = json.numPages
+        var creationDateTime = json.creationDateTime || toolbox.getDateTime()
+
+        var ingredient = new Book(id, name, creationDateTime, numPages)
 
         return ingredient
 

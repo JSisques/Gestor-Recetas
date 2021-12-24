@@ -60,6 +60,24 @@ module.exports = {
         })
     },
 
+    async addIngredient(req, res) {
+
+        return res.render('add_ingredient.html', {
+            app: pkg.appName,
+            title: "Añadir ingrediente"
+        })
+    },
+
+
+    async addBook(req, res) {
+
+        return res.render('add_book.html', {
+            app: pkg.appName,
+            title: "Añadir libro"
+        })
+    },
+
+
     async exportData(req, res) {
 
         var file =  await model.exportData()

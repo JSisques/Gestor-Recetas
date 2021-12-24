@@ -2,6 +2,16 @@
 
 This file is a contains a list of changes for each release.
 
+## v0.5.0 (24-12-2021)
+
+* Create `Book microservice`
+* Add `GET method` to get all the books stored in the database
+* Add `POST method` to save a book to the database
+* Add `PUT method` to update a selected book
+* Add `GET by ID method` to get a book by its ID
+* Create `add_ingredient.html`
+* Create `add_book.html`
+
 ## v0.4.0 (22-12-2021)
 
 * Create `calories_scrapping.py` to get a list of a bunch of ingredients and their calories
