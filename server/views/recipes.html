@@ -30,7 +30,7 @@
                 <i class="fas fa-search"></i>
             </button>
 
-            <button id="search-button" type="button" class="btn btn-dark ms-2 rounded" data-bs-toggle="collapse"
+            <button id="filter-button" type="button" class="btn btn-dark ms-2 rounded" data-bs-toggle="collapse"
                 data-bs-target="#filter" aria-controls="filter" aria-expanded="false" aria-label="Filter">
                 <i class="fas fa-filter"></i>
             </button>
@@ -58,11 +58,18 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row mt-2 mb-2 w-auto text-center">
+        <div class="container rounded border">
+            <div class="container row mt-2 mb-2 w-auto text-center">
                 <% for (let index = 0; index < recipes.length; index++) { %>
-                <div class="border rounded bg-success col-md-3 mb-2 mt-2 pt-2 pb-2">
-                    <a class="text-decoration-none text-dark" href="/recipe/<%= recipes[index].id %>"> <%= recipes[index].name %></a>
+                <div class="container border rounded bg-warning col-md-3 p-3">
+                    <a class="text-decoration-none text-dark" href="/recipe/<%= recipes[index].id %>">
+                        <div class="container">
+                            <%= recipes[index].name %>
+                        </div>
+                        <div class="container">
+                            <%= recipes[index].type %>
+                        </div>
+                    </a>
                 </div>
                 <%}%>
             </div>

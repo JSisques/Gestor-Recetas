@@ -1,6 +1,6 @@
 module.exports = Object.freeze({
-    HOST: "localhost",
+    HOST: "192.168.1.111",
     USER: "root",
-    PASSWORD: "",
-    DATABASE: "recipes",
+    PASSWORD: "1234",
+    DATABASE: "RECIPE",
 });
