@@ -10,9 +10,24 @@ module.exports = {
         if(!isNaN(id)){
 
             var result = await dao.getRecipeById(id)
+
             var recipe = mapper.recipeFromDatabase(result)
 
-            recipe.print()
+            result = await dao.getIngredientsOfRecipe(id)
+
+            result.forEach(ingredient => {
+                ingredient = mapper.ingredientFromDatabase(ingredient)
+                recipe.ingredients.push(ingredient)
+            });
+
+            result = await dao.getStepsOfRecipe(id)
+
+            result.forEach(step => {
+                step = mapper.stepFromDatabase(step)
+                recipe.steps.push(step)
+            });
+
+            console.log(recipe)
 
             return recipe
 

@@ -14,7 +14,36 @@ module.exports = {
 
     async getRecipeById(id){
 
-        if(!isNaN(id)) return await dao.getRecipeById(id)
+        
+
+
+        if(!isNaN(id)){
+
+            var result = await dao.getRecipeById(id)
+
+            var recipe = mapper.recipeFromDatabase(result)
+
+            result = await dao.getIngredientsOfRecipe(id)
+
+            result.forEach(ingredient => {
+                ingredient = mapper.ingredientFromDatabase(ingredient)
+                recipe.ingredients.push(ingredient)
+            });
+
+            result = await dao.getStepsOfRecipe(id)
+
+            result.forEach(step => {
+                step = mapper.stepFromDatabase(step)
+                recipe.steps.push(step)
+            });
+
+            console.log(recipe)
+
+        //query = queries.SELECT_RECIPE_INGREDIENTS
+        //result = await mysql.executeQueryWithParams(query, params)
+
+            return recipe
+        } 
 
         else return {Error: "El id " + id + " no existe"}
         

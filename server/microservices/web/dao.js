@@ -58,4 +58,28 @@ module.exports = {
 
         return result
     }, 
+
+    async getIngredientsOfRecipe(id){
+        
+        var query = queries.SELECT_RECIPE_INGREDIENTS
+        var params = [id]
+        
+        console.log(query)
+
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        return result
+    },
+
+    async getStepsOfRecipe(id){
+
+        var query = queries.SELECT_RECIPE_STEPS
+        var params = [id]
+        
+        console.log(query)
+
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        return result
+    }
 }

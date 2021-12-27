@@ -2,6 +2,7 @@ const Recipe = require("../entities/recipe")
 const Ingredient = require("../entities/ingredient")
 const Book = require("../entities/book")
 const toolbox = require('./toolbox')
+const Step = require("../entities/step")
 
 module.exports = {
 
@@ -11,7 +12,7 @@ module.exports = {
         var name = json.name 
         var type = json.type 
 
-        var ingredients = json.ingredient 
+        var ingredients = json.ingredient || []
         /*
         json.ingredients.forEach(ingredient => {
             ingredients.push(this.ingredientFromJson(ingredient))
@@ -24,10 +25,11 @@ module.exports = {
         var photoUrl = json.photoUrl 
         var photoUrlBackup = json.photoUrlBackup 
         var grade = json.grade 
+        var steps = json.steps || []
         var lastModificationDateTime = toolbox.getDateTime()
         var creationDateTime = json.creationDateTime || toolbox.getDateTime()
 
-        var recipe = new Recipe(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, lastModificationDateTime, creationDateTime)
+        var recipe = new Recipe(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, steps, lastModificationDateTime, creationDateTime)
 
         return recipe
     },
@@ -38,7 +40,7 @@ module.exports = {
         var name = json.NAME
         var type = json.TYPE
 
-        var ingredients = json.INGREDIENT
+        var ingredients = json.INGREDIENT || []
         /*
         json.ingredients.forEach(ingredient => {
             ingredients.push(this.ingredientFromJson(ingredient))
@@ -51,10 +53,11 @@ module.exports = {
         var photoUrl = json.PHOTO_URL
         var photoUrlBackup = json.PHOTO_URL_BACKUP
         var grade = json.GRADE
+        var steps = json.STEPS || []
         var lastModificationDateTime = toolbox.getDateTime()
         var creationDateTime = json.CREATION_DATETIME || toolbox.getDateTime()
 
-        var recipe = new Recipe(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, lastModificationDateTime, creationDateTime)
+        var recipe = new Recipe(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, steps, lastModificationDateTime, creationDateTime)
 
         return recipe
     },
@@ -69,6 +72,31 @@ module.exports = {
         var ingredient = new Ingredient(id, name, creationDateTime, calories)
 
         return ingredient
+
+    },
+
+    ingredientFromDatabase(json) {
+
+        var id = json.ID || 0
+        var name = json.NAME
+        var calories = json.CALORIES_PER_100_GRAMS
+        var creationDateTime = json.CREATION_DATETIME || toolbox.getDateTime()
+
+        var ingredient = new Ingredient(id, name, creationDateTime, calories)
+
+        return ingredient
+
+    },
+
+    stepFromDatabase(json) {
+
+        var id = json.ID || 0
+        var name = json.STEP
+        var creationDateTime = json.CREATION_DATETIME || toolbox.getDateTime()
+
+        var step = new Step(id, name, creationDateTime)
+
+        return step
 
     },
 

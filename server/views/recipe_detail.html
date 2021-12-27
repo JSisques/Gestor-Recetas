@@ -36,13 +36,10 @@
               <div class="col mt-2 mb-2">
                 <h3 class="mt-2">Ingredientes:</h3>
                 <ul>
-                    <li>250 gramos de Ingrediente 1</li>
+                  <%  for (let index = 0; index < recipe.ingredients.length; index++) { %>
+                    <li><%= recipe.ingredients[index].name %></li>
+                    <% } %>
                     <li>250 gramos de Ingrediente</li>
-                    <li>250 gramos de Ingrediente</li>
-                    <li>250 gramos de Ingrediente</li>
-                    <li>250 gramos de Ingrediente</li>
-                    <li>250 gramos de Ingrediente</li>
-                    
                 </ul>
               </div>
 
@@ -71,22 +68,15 @@
             </div>
 
             <!--Aqui va el bucle con todos los pasos a seguir de la receta siguiendo el siguiente formato-->
+            <%  for (let index = 0; index < recipe.steps.length; index++) { %>
+              
+          
             <div class="row">
-                <h4>Paso 1:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus suscipit iste similique, eligendi exercitationem autem voluptatibus doloribus amet laudantium odio, ullam nobis consequuntur eveniet optio dolorum assumenda iure incidunt saepe?</p>
-            </div>
-            
-            <!--Borrar-->
-            <div class="row">
-                <h4>Paso 2:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus suscipit iste similique, eligendi exercitationem autem voluptatibus doloribus amet laudantium odio, ullam nobis consequuntur eveniet optio dolorum assumenda iure incidunt saepe?</p>
+                <h4>Paso <%= index + 1 %>:</h4>
+                <p><%= recipe.steps[index].name%></p>
             </div>
 
-            <!--Borrar-->
-            <div class="row">
-                <h4>Paso 3:</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus suscipit iste similique, eligendi exercitationem autem voluptatibus doloribus amet laudantium odio, ullam nobis consequuntur eveniet optio dolorum assumenda iure incidunt saepe?</p>
-            </div>
+            <% } %>
           </div>
 
         <%- include('partials/footer.html') %>

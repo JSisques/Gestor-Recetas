@@ -6,7 +6,7 @@ module.exports = {
     async insertRecipe(recipe){
 
         var query = queries.INSERT_RECIPE
-        var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.lastModificationDateTime]
+        var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.steps, recipe.lastModificationDateTime]
         
         console.log(query)
         console.log(params)
@@ -38,16 +38,17 @@ module.exports = {
         console.log(query)
 
         var result = await mysql.executeQueryWithParams(query, params)
-        console.log(result)
+        var recipe = result[0]
+        console.log(recipe)
 
-        return result[0]
+        return recipe
 
     },
 
     async updateRecipe(recipe){
 
         var query = queries.UPDATE_RECIPE
-        var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.lastModificationDateTime, recipe.id]
+        var params = [recipe.name, recipe.plate, recipe.calories, recipe.photoUrl, recipe.photoUrlBackup, recipe.grade, recipe.steps, recipe.lastModificationDateTime, recipe.id]
         
         console.log(query)
         console.log(params)
@@ -58,4 +59,28 @@ module.exports = {
 
         return result
     }, 
+
+    async getIngredientsOfRecipe(id){
+        
+        var query = queries.SELECT_RECIPE_INGREDIENTS
+        var params = [id]
+        
+        console.log(query)
+
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        return result
+    },
+
+    async getStepsOfRecipe(id){
+
+        var query = queries.SELECT_RECIPE_STEPS
+        var params = [id]
+        
+        console.log(query)
+
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        return result
+    }
 }

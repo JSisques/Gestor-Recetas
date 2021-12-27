@@ -1,6 +1,6 @@
 module.exports = class Recipe {
 
-    constructor(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, lastModificationDateTime, creationDateTime) {
+    constructor(id, name, type, ingredients, book, plate, calories, photoUrl, photoUrlBackup, grade, steps, lastModificationDateTime, creationDateTime) {
         this.id = id
         this.name = name
         this.type = type
@@ -11,6 +11,7 @@ module.exports = class Recipe {
         this.photoUrl = photoUrl
         this.photoUrlBackup = photoUrlBackup
         this.grade = grade
+        this.steps = steps
         this.lastModificationDateTime = lastModificationDateTime
         this.creationDateTime = creationDateTime
     }
@@ -26,6 +27,7 @@ module.exports = class Recipe {
         console.log("photoUrl: " + this.photoUrl)
         console.log("photoUrlBackup: " + this.photoUrlBackup)
         console.log("grade: " + this.grade)
+        console.log("steps: " + this.steps)
         console.log("createdBy: " + this.createdBy)
         console.log("creationDateTime: " + this.creationDateTime)
         console.log("lastModificationDateTime: " + this.lastModificationDateTime)

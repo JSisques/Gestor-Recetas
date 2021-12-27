@@ -34,12 +34,11 @@ module.exports = {
                 if (err) return reject(err);
 
                 //console.log('The solution is: ', results);
-
+                
                 return resolve(results)
 
             })
         })
-
         //Devolvemos la promesa que en un futuro tendrá los datos correspondientes de la query
         return promise
 
