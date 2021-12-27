@@ -1,21 +1,48 @@
 {
-    "name": "Prueeba",
-    "type": "Type",
+    "id": 1,
+    "name": "RECETA 1",
+    "type": null,
     "ingredients": [
-
         {
-            "name": "Ingredient"
+            "id": 1,
+            "name": "Aceitunas negras",
+            "creationDateTime": "2021-12-26T16:05:23.000Z",
+            "calories": 349,
+            "quantity": 2,
+            "measureUnit": "cucharada"
         },
         {
-            "name": "Ingredient"
+            "id": 2,
+            "name": "Aceitunas verdes",
+            "creationDateTime": "2021-12-26T16:05:23.000Z",
+            "calories": 132,
+            "quantity": 2,
+            "measureUnit": "cucharada"
         }
     ],
-    "book": "Book",
-    "plate": "Plate",
-    "calories": "666",
-    "photoUrl": "URL",
-    "photoUrlBackup": "URL",
-    "grade": "9.75",
-    "creationDateTime": "Date",
-    "lastModificationDateTime": "Date"
+    "book": {
+        "id": 1,
+        "name": "LIBRO",
+        "creationDateTime": "2021-12-26T16:07:41.000Z",
+        "numPages": 200
+    },
+    "plate": "HOLI",
+    "calories": 666,
+    "photoUrl": "",
+    "photoUrlBackup": "",
+    "grade": 9,
+    "steps": [
+        {
+            "id": 1,
+            "name": "PASO 1",
+            "creationDateTime": "2021-12-26T16:06:14.000Z"
+        },
+        {
+            "id": 2,
+            "name": "PASO 2",
+            "creationDateTime": "2021-12-26T16:06:48.000Z"
+        }
+    ],
+    "lastModificationDateTime": "2021-12-27 22:20:08",
+    "creationDateTime": "2021-12-26T16:10:11.000Z"
 }

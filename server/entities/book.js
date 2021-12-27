@@ -1,4 +1,4 @@
-module.exports = class Ingredient{
+module.exports = class Book{
     
     constructor(id, name, creationDateTime, numPages){
         this.id = id

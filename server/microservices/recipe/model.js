@@ -6,50 +6,72 @@ module.exports = {
 
     async getAllRecipes() {
 
-        var result = await dao.getAllRecipes()
-        console.log(result)
+        var recipes = await dao.getAllRecipes()
 
-        return result
+        var listRecipes = []
+
+        for (const recipeDatabase of recipes) {
+
+            var recipe = mapper.recipeFromDatabase(recipeDatabase)
+
+            recipe = await this.getRecipeById(recipe.id)
+
+            listRecipes.push(recipe)
+
+        }
+
+        console.log(listRecipes)
+
+        return listRecipes
     },
 
-    async getRecipeById(id){
+    async getRecipeById(id) {
 
-        
-
-
-        if(!isNaN(id)){
+        if (!isNaN(id)) {
 
             var result = await dao.getRecipeById(id)
 
-            var recipe = mapper.recipeFromDatabase(result)
+            if (result != undefined) {
 
-            result = await dao.getIngredientsOfRecipe(id)
+                var recipe = mapper.recipeFromDatabase(result)
 
-            result.forEach(ingredient => {
-                ingredient = mapper.ingredientFromDatabase(ingredient)
-                recipe.ingredients.push(ingredient)
-            });
+                result = await dao.getIngredientsOfRecipe(id)
 
-            result = await dao.getStepsOfRecipe(id)
+                result.forEach(ingredient => {
+                    ingredient = mapper.ingredientFromDatabase(ingredient)
+                    recipe.ingredients.push(ingredient)
+                });
 
-            result.forEach(step => {
-                step = mapper.stepFromDatabase(step)
-                recipe.steps.push(step)
-            });
+                result = await dao.getStepsOfRecipe(id)
+
+                result.forEach(step => {
+                    step = mapper.stepFromDatabase(step)
+                    recipe.steps.push(step)
+                });
+
+                if (recipe.book != null) {
+                    result = await dao.getBookOfRecipe(recipe.book)
+
+                    var book = mapper.bookFromDatabase(result)
+
+                    recipe.book = book
+                }
+            } else {
+                recipe = {
+                    error: "Esa receta no existe"
+                }
+            }
 
             console.log(recipe)
 
-        //query = queries.SELECT_RECIPE_INGREDIENTS
-        //result = await mysql.executeQueryWithParams(query, params)
-
             return recipe
-        } 
+        }
 
-        else return {Error: "El id " + id + " no existe"}
-        
+        else return { Error: "El id " + id + " no existe" }
+
     },
 
-    async save(json){
+    async save(json) {
 
         console.log(json)
 
@@ -60,9 +82,9 @@ module.exports = {
         var result = await dao.insertRecipe(recipe)
 
         return result
-    }, 
+    },
 
-    async update(json){
+    async update(json) {
 
         console.log(json)
 

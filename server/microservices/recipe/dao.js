@@ -82,5 +82,19 @@ module.exports = {
         var result = await mysql.executeQueryWithParams(query, params)
 
         return result
+    },
+
+    async getBookOfRecipe(id){
+
+        var query = queries.SELECT_RECIPE_BOOK
+        var params = [id]
+        
+        console.log(query)
+
+        var result = await mysql.executeQueryWithParams(query, params)
+
+        console.log(result[0])
+
+        return result[0]
     }
 }

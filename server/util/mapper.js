@@ -68,8 +68,10 @@ module.exports = {
         var name = json.name
         var calories = json.calories
         var creationDateTime = json.creationDateTime || toolbox.getDateTime()
+        var quantity = json.quantity
+        var measureUnit = json.measureUnit
 
-        var ingredient = new Ingredient(id, name, creationDateTime, calories)
+        var ingredient = new Ingredient(id, name, creationDateTime, calories, quantity, measureUnit)
 
         return ingredient
 
@@ -81,8 +83,11 @@ module.exports = {
         var name = json.NAME
         var calories = json.CALORIES_PER_100_GRAMS
         var creationDateTime = json.CREATION_DATETIME || toolbox.getDateTime()
+        var quantity = json.QUANTITY
+        var measureUnit = json.MEASURE_UNIT
 
-        var ingredient = new Ingredient(id, name, creationDateTime, calories)
+
+        var ingredient = new Ingredient(id, name, creationDateTime, calories, quantity, measureUnit)
 
         return ingredient
 
@@ -107,9 +112,22 @@ module.exports = {
         var numPages = json.numPages
         var creationDateTime = json.creationDateTime || toolbox.getDateTime()
 
-        var ingredient = new Book(id, name, creationDateTime, numPages)
+        var book = new Book(id, name, creationDateTime, numPages)
 
-        return ingredient
+        return book
+
+    },
+
+    bookFromDatabase(json) {
+
+        var id = json.ID || 0
+        var name = json.NAME
+        var numPages = json.NUM_PAGES
+        var creationDateTime = json.CREATION_DATE || toolbox.getDateTime()
+
+        var book = new Book(id, name, creationDateTime, numPages)
+
+        return book
 
     }
 }
